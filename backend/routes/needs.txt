@@ -1,0 +1,12 @@
+
+
+- get comment
+- get reply
+- post comment
+- post reply
+- put comment
+- put reply
+- put likes
+- put dislikes
+- delete comment
+- delete reply
