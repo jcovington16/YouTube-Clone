@@ -29,12 +29,15 @@ router.post('/', async(req, res) => {
     }
 });
 
-router.put('/:videoID', async (req, res) => {
+router.put('/:commentId', async (req, res) => {
     try{
-        const comment = new Comment.findByIdAndUpdate({
-            text: req.body.name,
+        const comment = await Comment.findByIdAndUpdate(
+            req.params.commentId,
+            {
+            text: req.body.text,
             timeStamp: req.body.timeStamp,
-        });
+        }
+        );
 
         await comment.save();
 
