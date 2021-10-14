@@ -22,7 +22,7 @@ const Comment = monogoose.model('Comment', commentSchema);
 function validateComment(comment) {
     const schema = Joi.object({
         text: Joi.string().required().min(5).max(500),
-        videoID: Joi.string().required()
+        videoID: Joi.string().required(),
     });
     return schema.validate(comment)
 }

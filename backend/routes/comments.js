@@ -21,6 +21,7 @@ router.post('/', async(req, res) => {
             text: req.body.text,
             videoID: req.body.videoID, 
             timeStamp: req.body.timeStamp,
+            likes: req.body.likes
         });
         await comment.save();
         return res.send(comment);
@@ -47,5 +48,28 @@ router.put('/:commentId', async (req, res) => {
     }
 });
 
+router.put('/likes/:commentId', async(req, res) => {
+    try {
+        const comment = await Comment.findById(req.params.commentId)
+            comment.likes+=1
+        
+        await comment.save();
+        return res.send(comment)
+    } catch(ex) {
+        return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+});
+
+router.put('/dislikes/:commentId', async(req, res) => {
+    try {
+        const comment = await Comment.findById(req.params.commentId)
+            comment.dislikes+=1
+        
+        await comment.save();
+        return res.send(comment)
+    } catch(ex) {
+        return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+});
 
 module.exports = router;

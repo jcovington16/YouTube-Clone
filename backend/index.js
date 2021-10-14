@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const comment = require('./routes/comments');
 
+
 connectDB();
 
 app.use(express.json());
