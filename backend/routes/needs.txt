@@ -1,10 +1,10 @@
 
 
 - get comment - done
-- get reply
-- post comment - odne
-- post reply
+- get reply - untested
+- post comment - done
+- post reply - untested
 - put comment - done
-- put reply
+- put reply - untested
 - put likes
 - put dislikes
