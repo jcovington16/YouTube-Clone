@@ -1,4 +1,4 @@
-const {Comment, validateComment} = require('../models/comment');
+const {Comment, Reply, validateComment, validateReply} = require('../models/comment');
 const express = require('express');
 const router = express.Router();
 
@@ -30,21 +30,25 @@ router.post('/', async(req, res) => {
     }
 });
 
-router.put('/:commentId', async (req, res) => {
-    try{
-        const comment = await Comment.findByIdAndUpdate(
-            req.params.commentId,
-            {
-            text: req.body.text,
-            timeStamp: req.body.timeStamp,
+router.post('/reply/:commentId', async(req, res) => {
+    try {
+        const {error} = validateReply(req.body);
+        if(error) {
+            return res.status(400).send(error);
         }
-        );
 
-        await comment.save();
-
-        return res.send(comment);
-    } catch (ex) {
-        return res.status(500).send(`Internal Server Error: ${ex}`);
+        const comment = await Comment.findById(req.params.commentId);
+        const new_reply = new Reply({
+            text: req.body.text,
+            timeStamp: req.body.timeStamp
+        });
+        
+        await new_reply.save();
+        comment.replies.push(new_reply);
+        
+        return res.send(comment.replies);
+    } catch(ex) {
+        return res.status(500).send(`Internal Sever Error: ${ex}`);
     }
 });
 
