@@ -26,9 +26,6 @@ function validateComment(comment) {
     const schema = Joi.object({
         text: Joi.string().required().min(5).max(500),
         videoID: Joi.string().required(),
-        timeStamp: Joi.date(),
-        likes: Joi.number(),
-        dislikes: Joi.number()
     });
     return schema.validate(comment)
 }
@@ -36,10 +33,6 @@ function validateComment(comment) {
 function validateReply(reply) {
     const schema = Joi.object({
         text: Joi.string().required().min(5).max(500),
-        videoID: Joi.string().required(),
-        timeStamp: Joi.date(),
-        likes: Joi.number(),
-        dislikes: Joi.number()
     });
     return schema.validate(reply)
 }

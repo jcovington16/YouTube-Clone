@@ -39,13 +39,12 @@ router.post('/reply/:commentId', async(req, res) => {
 
         const comment = await Comment.findById(req.params.commentId);
         const new_reply = new Reply({
-            text: req.body.text,
-            timeStamp: req.body.timeStamp
+            text: req.body.text
         });
         
-        await new_reply.save();
+
         comment.replies.push(new_reply);
-        
+        await comment.save();
         return res.send(comment.replies);
     } catch(ex) {
         return res.status(500).send(`Internal Sever Error: ${ex}`);
