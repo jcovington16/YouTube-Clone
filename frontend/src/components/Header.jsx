@@ -10,14 +10,15 @@ import axios from 'axios';
 
 const Header = () => {
 
-    const url = `https://www.googleapis.com/youtube/v3/search?q=&key=`
+    //const url = `https://www.googleapis.com/youtube/v3/search?q=&key=`
     const [videoSearch, setVideoSearch] = useState("");
     const [videoID, setVideosID] = useState("");
 
     useEffect(() => {
-        axios.get(url)
-            .then(response => setVideoSearch(response.data)
-        )}, [videoSearch])
+        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=`)
+            .then(response => setVideoSearch(response.data["items"])
+        )}, [videoSearch]);
+
     return (
         <div className="header">
 
