@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import './Videos.css';
 
 const Videos = () => {
 
@@ -17,7 +18,7 @@ const Videos = () => {
     })
 
     return (
-        <div>
+        <div className="videos">
  
         </div>
     )
