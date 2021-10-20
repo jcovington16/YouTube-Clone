@@ -15,7 +15,8 @@ const Videos = () => {
         <div className="videos">
             <h2>Recommended</h2>
 
-            <iframe title="Video" id="ytplayer" type="text/hmtl" width="640" height="360" src="https://www.youtube.com/embed/wCl9kvQGHPI?autoplay=0" frameBorder="0"></iframe>
+            <iframe title="Video" id="ytplayer" type="text/hmtl" width="640" height="360" 
+            src="https://www.youtube.com/embed/wCl9kvQGHPI?autoplay=0" frameBorder="0"></iframe>
 
         </div>
     )

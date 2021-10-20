@@ -18,13 +18,13 @@ const Header = () => {
         console.log(videoSearch)
     }
 
-    useEffect(() => {
-        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyChw-LvG3XsPlMckbRLiROyagMdZ9bCYeo`)
-            .then(res => {
-                setVideosID(res.data["items"][0].id.videoId)
-                console.log(res.data["items"][0].id.videoId)
-            } 
-    )}, [videoID, videoSearch]);
+    // useEffect(() => {
+    //     axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyChw-LvG3XsPlMckbRLiROyagMdZ9bCYeo`)
+    //         .then(res => {
+    //             setVideosID(res.data["items"][0].id.videoId)
+    //             console.log(res.data["items"][0].id.videoId)
+    //         } 
+    // )}, [videoID, videoSearch]);
 
     return (
         <div className="header">
