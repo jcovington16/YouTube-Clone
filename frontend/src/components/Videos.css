@@ -5,6 +5,6 @@
     padding-bottom: 0;
 }
 
-.videos > h2 {
+.videos > h2, iframe {
     margin-left: 5px;
 }
