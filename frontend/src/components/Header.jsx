@@ -9,19 +9,17 @@ import axios from 'axios';
 
 const Header = ({setVideoID}) => {
     const [videoSearch, setVideoSearch] = useState("");
-    // const [videoID, setVideosID] = useState("");
 
     const search = (e) => {
         e.preventDefault();
         setVideoSearch(e.target[0].value)
-        console.log(videoSearch)
     }
 
     useEffect(() => {
-        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyChw-LvG3XsPlMckbRLiROyagMdZ9bCYeo`)
-            .then(res => {setVideoID(res.data["items"][0].id.videoId)} 
-    )}, [videoSearch, setVideoID]);
-
+        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyB8wMttZxBfr5FkkxdmXA9LFFVerMSiN3Q.&part=snippet`)
+            .then(res => {setVideoID(res.data["items"][0].id.videoId)}      
+    )},[videoSearch, setVideoID])
+    
     return (
         <div className="header">
 

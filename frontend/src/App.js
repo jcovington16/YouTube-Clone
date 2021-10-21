@@ -3,6 +3,7 @@ import Header from './components/Header';
 import './App.css';
 import SideBar from './components/SideBar';
 import Videos from './components/Videos';
+import RecommendedVideos from './components/RecommendedVideos';
 //import cors from 'cors';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <div className="main__page">
         <SideBar />
         <Videos video={videoID}/>
+        <RecommendedVideos video={videoID}/>
       </div>
       
     </div>
