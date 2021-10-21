@@ -1,24 +1,33 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
 import './Videos.css';
+import Comments from './Comments';
+//import axios from 'axios';
 
-const Videos = () => {
+const Videos = (props) => {
 
-    const [videos, setVideos] = useState([]);
+    const url = "https://www.youtube.com/embed/"
 
-//    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=computers&key=${"apiKey"}`;
-
-
-    useEffect(() => {
-        axios.get(`https://www.googleapis.com/youtube/v3/search?q=Javascript&key=AIzaSyBPapo9wPpHZ35JdexyFu2v2mwKJcM3BfE`)
-            .then(response => setVideos(response.data["items"]["id"]["videoId"])
-        )}, [videos]);
+    // const info = () => {
+    //     axios.get(`https://www.googleapis.com/youtube/v3/vidoes?part=snippet?id=${props.video}&key=AIzaSyB8wMttZxBfr5FkkxdmXA9LFFVerMSiN3Q`)
+    //         .then(res => {console.log(res.data)})
+    // }
+    // info()
 
     return (
-        <div className="videos">
-        <iframe id="ytplayer" type="text/html" width="640" height="360"
-        src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0"
-        frameborder="0"></iframe>
+        <div>
+            <div className="videos">
+                <h2>Playing</h2>
+                <iframe title="Video" id="ytplayer" type="text/hmtl" width="550" height="360" 
+                src={`${url}${props.video}?autoplay=0`} frameBorder="0"></iframe>
+            </div>
+
+            <div className="info">
+
+            </div>
+
+            <div className="comments">
+                <Comments />
+            </div>
         </div>
         
     )

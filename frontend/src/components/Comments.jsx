@@ -1,37 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 
-const Comments = (props)=>{
-    const [text, setText] = useState('');
-    const [comments, setComments] = useState([]);
+const Comments = (props) => {
 
-    const handleChange = (event) => {
-        setText(event.target.value);
-      };
+//    const url = "http://localhost:50001/api/comment/"
+//    const [comments, setComments] = useState("");
 
-    const handleClick =()=>{
+    // useEffect(() => {
+    //     axios.get(url)
+    // })
 
-        const newComment={
-            text: text
-        }
-        props.addNewComment(newComment);
-        setText('');
-    }
-
-    const addNewComment = (newComment) => {
-        axios
-          .post(`http://localhost:5001/api/comment/oFqVvjq6BGM`, newComment)
-    
-      }
-
-      return(
-        <div className="container">
-            <div>
-                <textarea name="comments" id="" value={text} cols="75" rows="5" placeholder="Enter a comment" onChange={handleChange} ></textarea>
-                </div>
-                <div className="replyButton">
-                <button onClick={handleClick}>Submit comment</button>
-            </div>
+    return (
+        <div>
+            <h2>Comments</h2>
+            <form action="">
+               <textarea style={{width: '100%', borderRadius: '5px'}}name="" placeholder="write some comments"></textarea>
+            </form>  
         </div>
     )
 }

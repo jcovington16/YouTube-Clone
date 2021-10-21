@@ -7,18 +7,19 @@ import AppsIcon from '@material-ui/icons/Apps';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import axios from 'axios';
 
-
-const Header = () => {
-
-    //const url = `https://www.googleapis.com/youtube/v3/search?q=&key=`
+const Header = ({setVideoID}) => {
     const [videoSearch, setVideoSearch] = useState("");
-    const [videoID, setVideosID] = useState("");
+
+    const search = (e) => {
+        e.preventDefault();
+        setVideoSearch(e.target[0].value)
+    }
 
     useEffect(() => {
-        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=`)
-            .then(response => setVideoSearch(response.data["items"])
-        )}, [videoSearch]);
-
+        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyB8wMttZxBfr5FkkxdmXA9LFFVerMSiN3Q.&part=snippet`)
+            .then(res => {setVideoID(res.data["items"][0].id.videoId)}      
+    )},[videoSearch, setVideoID])
+    
     return (
         <div className="header">
 
@@ -32,15 +33,17 @@ const Header = () => {
             </div>
 
             <div className="header__input">
-                <input type="text" placeholder="Search"/>
-                <SearchIcon className="header__inputButton" type="submit"/>
+                <form onSubmit={(e) => search(e)}>
+                    <input type="text" placeholder="Search" name="input"/>
+                    <button type="submit" ><SearchIcon className="header__inputButton"/></button>
+                </form>
             </div>
 
             <div className="header__right">
                 <VideoCallIcon className="header__icon"/>
                 <AppsIcon className="header__icon"/>
                 <NotificationsIcon className="header__icon"/>
-            </div>
+            </div>  
 
         </div>
     )
