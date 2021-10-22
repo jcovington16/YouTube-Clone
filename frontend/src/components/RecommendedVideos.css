@@ -2,3 +2,14 @@
     flex: 0.1;
     margin-left: 5px;
 }
+
+.videos > ul {
+    list-style-type: none;
+}
+
+.music_list {
+    border: 1px solid black;
+    margin-bottom: 5px;
+    display: flex;
+    cursor: pointer;
+}

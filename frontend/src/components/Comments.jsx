@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 
 const Comments = (props) => {
 
-//    const url = "http://localhost:50001/api/comment/"
+//    const url = "http://localhost:5001/api/comment/"
 //    const [comments, setComments] = useState("");
 
     // useEffect(() => {
