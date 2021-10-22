@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Replies from './Reply';
 
 const Comments = (props) => {
 
    const url = "http://localhost:5001/api/comment/";
    const [comments, setComments] = useState([]);
    const [text, setText] = useState('');
+   const [comment_id, setComment_id] = ('');
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5001/api/comment/${props.id}`)
-    //     .then(res => {setComments(res.data["text"])})
-    // })
+    useEffect(()=> {
+            axios.get(`http://localhost:5001/api/comment/${props.id}`)
+            .then(res => {setComment_id(res.data["_id"])})
+        })
 
     const handleChange = (event) => {
         setText(event.target.value);
@@ -40,6 +42,7 @@ const Comments = (props) => {
                <div className="replyButton">
                 <button onClick={handleClick}>Submit comment</button>
                 </div>
+                <Replies id={comment_id} />
             </form>  
 
         </div>
