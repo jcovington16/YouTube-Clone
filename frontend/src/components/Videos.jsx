@@ -26,7 +26,7 @@ const Videos = (props) => {
             </div>
 
             <div className="comments">
-                <Comments />
+                <Comments id={props.video} />
             </div>
         </div>
         

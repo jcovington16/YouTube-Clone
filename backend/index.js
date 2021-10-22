@@ -1,12 +1,12 @@
 const connectDB = require('./startup/db');
 const express = require('express');
 const app = express();
-// const cors = required('cors');
+const cors = require('cors');
 const comment = require('./routes/comments');
 
 connectDB();
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use('/api/comment', comment);
 
