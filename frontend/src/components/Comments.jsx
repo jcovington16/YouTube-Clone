@@ -4,20 +4,14 @@ import Replies from './Reply';
 
 const Comments = (props) => {
 
-   const url = "http://localhost:5001/api/comment/"
    const [comment, setComments] = useState([]);
-
-   // Use this to display the replies that are associated with the comments. 
-   const [comment_reply, setCommentReply] = useState([]);
    const [text, setText] = useState('');
 
 
     useEffect(()=> {
             axios.get(`http://localhost:5001/api/comment/${props.id}`)
             .then(res=> {setComments(res.data)})
-
-            axios.get(``)
-        })    
+        })
 
     const handleChange = (event) => {
         setText(event.target.value);
@@ -49,29 +43,27 @@ const Comments = (props) => {
                 </div>   
             </form> 
 
-            <div>
+            <div className="">
                 <ul>
-                    {comment.map((info) => {
-                        return (
-                            <li key={info._id}>
-                                <p>{info.text}</p>
-                                {/* This will display the reply button and handle submission 
-                                Create another component to do a get request. Create the useState
-                                variable and function above so you can pass it back into this 
-                                component to display the replies. When you reply to a comment just
-                                ensure you have the comment id so all of the replies will show
-                                don't forget conditional rendering. Great example of that is in the 
-                                recommended videos component.*/}
-                                <Replies />
-                            </li>
-                        )
-                    })}
-                    
+                {comment.map((a) => {
+                    return(
+                        <li key={a}>
+                            {a.text}
+                            <br></br>                           
+                            {a.replies && a.replies.map((reply) =>{
+                                return(
+                                    <li>
+                                        {reply.text}
+                                    </li>
+                                )
+                            })}
+                            <Replies comment_id = {a._id} />
+                        </li>     
+                    )
+                })}
                 </ul>
-            </div> 
-
-            
-
+                
+            </div>
         </div>
     )
 }

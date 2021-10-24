@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const Replies = ({id}) => {
-
-    const [reply, setReply] = useState([]);
+const Replies = ({comment_id}) => {
     const [text, setText] = useState('');
     const [showForm, setShowForm] = useState(false);
 
@@ -21,13 +19,12 @@ const Replies = ({id}) => {
         setText('');
     }
 
-    // shows the form when we press reply and it will dissapear if we press it again
     const showForms = () => {
         setShowForm(!showForm)
     }
 
     const addNewComment = (newReply) => {
-        axios.post(`http://localhost:5001/api/comment/reply/${id}`, newReply)   
+        axios.post(`http://localhost:5001/api/comment/reply/${comment_id}`, newReply)   
       }
 
     return (
