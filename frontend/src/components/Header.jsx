@@ -33,7 +33,7 @@ const Header = ({setVideoID}) => {
             </div>
 
             <div className="header__input">
-                <form onSubmit={(e) => search(e)}>
+                <form onSubmit={(e) => search(e)} className="header__form">
                     <input type="text" placeholder="Search" name="input"/>
                     <button type="submit" ><SearchIcon className="header__inputButton"/></button>
                 </form>
