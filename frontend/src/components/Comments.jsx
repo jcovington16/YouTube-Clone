@@ -4,8 +4,11 @@ import Replies from './Reply';
 
 const Comments = (props) => {
 
+   const url = "http://localhost:5001/api/comment/"
+   const [comments, setComments] = useState("");
    const [comment, setComments] = useState([]);
    const [text, setText] = useState('');
+
 
     useEffect(()=> {
             axios.get(`http://localhost:5001/api/comment/${props.id}`)

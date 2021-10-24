@@ -14,6 +14,10 @@ function App() {
     console.log(videoID)
   }, [videoID])
 
+  const handleUpdate = (info) => {
+    setVideoID(info)
+  }
+
   return (
     <div className="App">
       <Header setVideoID={setVideoID}/>
@@ -21,7 +25,7 @@ function App() {
       <div className="main__page">
         <SideBar />
         <Videos video={videoID}/>
-        <RecommendedVideos video={videoID}/>
+        <RecommendedVideos video={videoID} update={(info) => handleUpdate(info)}/>
       </div>
       
     </div>

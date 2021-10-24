@@ -16,7 +16,7 @@ const Header = ({setVideoID}) => {
     }
 
     useEffect(() => {
-        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyCsCp-xN02zbNnLxhlkrffO309H1q0_UXI`)
+        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyB9dQqvwZHYf3vmd7IMEq7J6UdvPkejwqQ`)
             .then(res => {setVideoID(res.data["items"][0].id.videoId)}      
     )},[videoSearch, setVideoID])
     
@@ -33,7 +33,7 @@ const Header = ({setVideoID}) => {
             </div>
 
             <div className="header__input">
-                <form onSubmit={(e) => search(e)}>
+                <form onSubmit={(e) => search(e)} className="header__form">
                     <input type="text" placeholder="Search" name="input"/>
                     <button type="submit" ><SearchIcon className="header__inputButton"/></button>
                 </form>
