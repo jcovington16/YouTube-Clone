@@ -16,7 +16,7 @@ const Header = ({setVideoID}) => {
     }
 
     useEffect(() => {
-        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyB8wMttZxBfr5FkkxdmXA9LFFVerMSiN3Q`)
+        axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=AIzaSyCsCp-xN02zbNnLxhlkrffO309H1q0_UXI`)
             .then(res => {setVideoID(res.data["items"][0].id.videoId)}      
     )},[videoSearch, setVideoID])
     

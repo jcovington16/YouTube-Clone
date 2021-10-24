@@ -24,7 +24,7 @@ const Comments = (props) => {
         event.preventDefault();
         const newComment={
             text: text,
-            videoID: props.id
+            videoID: `${props.id}`
         }
     
         addNewComment(newComment);
